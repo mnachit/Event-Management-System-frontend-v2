@@ -4,6 +4,9 @@ import {
   CommonModule, LocationStrategy,
   PathLocationStrategy
 } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -11,7 +14,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { KeycloakService } from 'keycloak-angular';
 
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FullComponent } from './layouts/full/full.component';
 
@@ -42,7 +45,6 @@ import { AuthInterceptor } from './auth.interceptor';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule,
     RouterModule.forRoot(Approutes, { useHash: false }),
     FullComponent,
     NavigationComponent,
