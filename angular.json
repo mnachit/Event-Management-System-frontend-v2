@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "elite-angular-lite:build:production"
+              "buildTarget": "elite-angular-lite:build:production"
             },
             "development": {
-              "browserTarget": "elite-angular-lite:build:development"
+              "buildTarget": "elite-angular-lite:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "elite-angular-lite:build"
+            "buildTarget": "elite-angular-lite:build"
           }
         },
         "test": {

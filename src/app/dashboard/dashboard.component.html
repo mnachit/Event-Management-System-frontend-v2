@@ -7,7 +7,7 @@
                         <h4 class="card-title">Events</h4>
                         <h5 class="card-subtitle text-muted">Overview of the Events</h5>
                     </div>
-                    <div class="mt-1"><button class="btn btn-primary" data-toggle="modal" data-target="#modal-event" >Add
+                    <div class="mt-1"><button class="btn btn-primary" data-toggle="modal" data-target="#modal_event">Add
                             event</button></div>
                 </div>
                 <div class="container mt-4">
@@ -30,42 +30,42 @@
                     <table class="table align-middle text-nowrap bg-white" id="EventsTable">
                         <thead>
                             <tr>
-                                <th class="text-dark font-medium fs-4">Code</th>
+                                <th class="text-dark font-medium fs-4">Name event</th>
                                 <th class="text-dark font-medium fs-4">Date</th>
                                 <th class="text-dark font-medium fs-4">Start Time</th>
                                 <th class="text-dark font-medium fs-4">End Time</th>
                                 <th class="text-dark font-medium fs-4">Location</th>
                                 <th class="text-dark font-medium fs-4">Total Participants</th>
                                 <th class="text-dark font-medium fs-4">Amount</th>
-                                <th class="text-dark font-medium fs-4">Status</th>
                                 <th class="text-dark font-medium fs-4">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let event of EventById">
                                 <td>
-                                    <h5 class="mb-0 fw-normal"></h5>
-                                </td>
-                                <td class="fs-4"></td>
-                                <td>
-                                    <h5 class="mb-0 fw-normal"></h5>
+                                    <h5 class="mb-0 fw-normal">{{ event.nomEvenement | slice:0:10 }} ..</h5>
                                 </td>
                                 <td>
-                                    <h5 class="mb-0 fw-normal"></h5>
+                                    <h5 class="mb-0 fw-normal">{{event.createdAt}}</h5>
                                 </td>
                                 <td>
-                                    <h5 class="mb-0 fw-normal"></h5>
+                                    <h5 class="mb-0 fw-normal">{{event.dateDebut}}</h5>
                                 </td>
                                 <td>
-                                    <h5 class="mb-0 fw-normal"></h5>
+                                    <h5 class="mb-0 fw-normal">{{event.dateFin}}</h5>
                                 </td>
-                                <td class="fs-4"></td>
                                 <td>
-                                    <h5 class="mb-0 fw-normal"></h5>
+                                    <h5 class="mb-0 fw-normal">{{event.localisation | slice:0:10 }} ..</h5>
+                                </td>
+                                <td>
+                                    <h5 class="mb-0 fw-normal">{{event.nombreMaxUser}}</h5>
+                                </td>
+                                <td>
+                                    <h5 class="mb-0 fw-normal">{{event.amount}}$</h5>
                                 </td>
                                 <td class="d-flex justify-content-evenly">
-                                    <button type="submit" class="btn btn-info opacity-75">View</button>
-                                    <button type="submit" class="btn btn-success ms-1">Edit</button>
+                                    <button type="submit" class="btn btn-info opacity-75"
+                                        (click)="event.id !== undefined ? getEventById(event.id.toString()) : null" data-toggle="modal" data-target="#modal_event1">View</button>
                                     <button type="submit" class="btn btn-danger ms-1">Delete</button>
                                 </td>
                             </tr>
@@ -78,61 +78,124 @@
     </div>
 </div>
 
-<div class="modal fade mt-5" id="modal-event" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade mt-5" id="modal_event" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="POST"  id="form-task" enctype="multipart/form-data"
-                data-parsley-validate>
+            <form>
                 <div class="modal-header">
-                    <h5 class="modal-title text-danger">Add Product</h5>
+                    <h5 class="modal-title text-danger">Add Event</h5>
                     <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
                 </div>
                 <div class="modal-body">
-                    <input type="file" name="image_pro" required>
+                    <label class="form-label">Event Nome</label>
+                    <input type="text" name="Nome_E" class="form-control text-dark" style="background-color : #DDDDDD"
+                        id="Nome_E_id" required [(ngModel)]="Event.nomEvenement" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Localisation</label>
+                    <input type="text" name="localisation" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="localisation_id" required
+                        [(ngModel)]="Event.localisation" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">amount</label>
+                    <input type="number" name="amount" class="form-control text-dark" style="background-color : #DDDDDD"
+                        id="amount_id" required [(ngModel)]="Event.amount" />
                 </div>
                 <div class="modal-body">
                     <label class="form-label">Date</label>
                     <input type="datetime-local" name="Date_P" class="form-control text-dark"
-                        style="background-color : #DDDDDD" id="Date_P_id" required />
+                        style="background-color : #DDDDDD" id="Date_E_id" required [(ngModel)]="Event.createdAt" />
                 </div>
                 <div class="modal-body">
-                    <label class="form-label">Nome Product</label>
-                    <input type="text" name="Nome_P" class="form-control text-dark" style="background-color : #DDDDDD"
-                        id="Nome_P_id" required />
+                    <label class="form-label">Date Debut</label>
+                    <input type="time" step="1" name="dateDebut" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="dateDebut_id" required [(ngModel)]="Event.dateDebut" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Date Fin</label>
+                    <input type="time" step="1" name="dateFin" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="dateFin_id" required [(ngModel)]="Event.dateFin" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Max User Number</label>
+                    <input type="number" name="nombreMaxUser" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="nombreMaxUser_id" required
+                        [(ngModel)]="Event.nombreMaxUser" />
                 </div>
                 <div class="modal-body">
                     <label class="form-label">Description</label>
-                    <textarea name="Description_P" class="form-control text-dark" style="background-color : #DDDDDD"
-                        id="Description_P_id" required></textarea>
-                </div>
-                <div class="modal-body">
-                    <select class="form-select" style="background-color : #DDDDDD" name="Produit" required>
-                        <option selected>Open this select menu</option>
-                        <option value="produit cosmétique">produit cosmétique</option>
-                        <option value=" COMPLÉMENTS ALIMENTAIRES"> COMPLÉMENTS ALIMENTAIRES</option>
-                        <option value="Accessoires et matériel médical">Accessoires et matériel médical</option>
-                        <option value="Réactifs et tests">Réactifs et tests</option>
-                    </select>
-                </div>
-                <div class="modal-body">
-                    <label class="form-label">Price</label>
-                    <input type="text" name="Price_P" class="form-control text-dark" style="background-color : #DDDDDD"
-                        id="Price_P_id" required />
-                </div>
-                <div class="modal-body">
-                    <label class="form-label">Sold (option)</label>
-                    <input type="number" name="Sold_P" class="form-control text-dark" style="background-color : #DDDDDD"
-                        id="Sold_P_id" required />
-                </div>
-                <div class="modal-body">
-                    <label class="form-label">Quantity</label>
-                    <input type="text" name="Quantity_P" class="form-control text-dark"
-                        style="background-color : #DDDDDD" id="Quantity_P_id" required />
+                    <input type="text" name="descriptionAgenda" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="descriptionAgenda_id" required
+                        [(ngModel)]="Event.descriptionAgenda" />
                 </div>
                 <div class="modal-footer">
-                    <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
-                    <button type="submit" name="saveuser" class="btn btn-primary task-action-btn"
-                        id="task-save-btn1">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal"
+                        (click)="createNewEvent()">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade mt-5" id="modal_event1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger">Add Event</h5>
+                    <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Event Nome</label>
+                    <input type="text" name="Nome_E" class="form-control text-dark" style="background-color : #DDDDDD"
+                        id="Nome_E_id" required [(ngModel)]="Event.nomEvenement" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Localisation</label>
+                    <input type="text" name="localisation" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="localisation_id" required
+                        [(ngModel)]="Event.localisation" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">amount</label>
+                    <input type="number" name="amount" class="form-control text-dark" style="background-color : #DDDDDD"
+                        id="amount_id" required [(ngModel)]="Event.amount" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Date</label>
+                    <input type="datetime-local" name="Date_P" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="Date_E_id" required [(ngModel)]="Event.createdAt" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Date Debut</label>
+                    <input type="time" step="1" name="dateDebut" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="dateDebut_id" required [(ngModel)]="Event.dateDebut" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Date Fin</label>
+                    <input type="time" step="1" name="dateFin" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="dateFin_id" required [(ngModel)]="Event.dateFin" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Max User Number</label>
+                    <input type="number" name="nombreMaxUser" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="nombreMaxUser_id" required
+                        [(ngModel)]="Event.nombreMaxUser" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Description</label>
+                    <input type="text" name="descriptionAgenda" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="descriptionAgenda_id" required
+                        [(ngModel)]="Event.descriptionAgenda" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal"
+                        (click)="createNewEvent()">Save</button>
                 </div>
             </form>
         </div>
