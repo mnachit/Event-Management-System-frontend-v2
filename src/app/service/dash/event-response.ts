@@ -10,5 +10,6 @@ export class EventResponse {
     dateFin?: string;
     descriptionAgenda?: string;
     createdAt?: Date;
+    dateCreation?: Date;
     createdBy?: string;
 }

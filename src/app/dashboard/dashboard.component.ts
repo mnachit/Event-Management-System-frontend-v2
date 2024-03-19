@@ -3,12 +3,14 @@ import { CreateNeweventService } from '../service/dash/create-newevent.service';
 import { EventResponse } from '../service/dash/event-response';
 import { AuthorizedGuardService } from '../guard/authorized-guard.service';
 import { AllertService } from '../service/dash/allert.service';
+import * as bootstrap from 'bootstrap';
 //declare var require: any;
 
 @Component({
   templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
+  @ViewChild('modal_event') modalEvent: any; // Reference to the modal window
   Event: EventResponse = new EventResponse();
 
   constructor(
@@ -44,9 +46,6 @@ export class DashboardComponent implements OnInit {
       error: (e) => console.error(e)
     });
   }
-
-  openModal(eventId: number) { // Pass the event ID to the modal component
-  }
   ngOnInit() {
     this.getEventByIdUser();
   }
@@ -60,8 +59,15 @@ export class DashboardComponent implements OnInit {
       },
       (error: { errors: string; errorMap: string }) => {
         this.allert.showError("Please check the form ", 2000);
+        console.log(this.Event);
+        
       }
     );
+  }
+
+  openEventModal(): void {
+    let modal = new bootstrap.Modal(this.modalEvent.nativeElement, {});
+    modal.show();
   }
 
   // Rest of the code...

@@ -6,6 +6,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { checkTokenGuard } from './guard/check-token.guard';
 import { EditprofileComponent } from './auth/editprofile/editprofile.component';
+import { EventDetaitsComponent } from './dashboard/event-detaits/event-detaits.component';
 
 export const Approutes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -16,6 +17,7 @@ export const Approutes: Routes = [
     children: [
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
       { path: 'edit-profile', component: EditprofileComponent},
+      { path: 'dashboard/event/:id', component: EventDetaitsComponent},
       {
         path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
