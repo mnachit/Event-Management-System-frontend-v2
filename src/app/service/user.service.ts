@@ -18,7 +18,7 @@ export class UserService {
     return this.http.get<{message: String, result: User}>(`${this.baseUrl}/user/${email}`);
   }
 
-  updateUser(user: UserEdit): Observable<{message: String, result: User}> {
-    return this.http.put<{message: String, result: User}>(`${this.baseUrl}/user/edit`, user);
+  updateUser(user: UserEdit, id: string): Observable<{message: String, result: User, errors: string, errorMap: string[]}> {
+    return this.http.put<{message: String, result: User, errors: string, errorMap: string[]}>(`${this.baseUrl}/user/edit/`+id, user);
   }
 }

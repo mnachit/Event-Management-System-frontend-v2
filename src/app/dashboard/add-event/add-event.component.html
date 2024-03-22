@@ -1,0 +1,59 @@
+<div class=" mt-5" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header d-flex justify-content-center">
+                    <h5 class="modal-title text-danger">Add Event</h5>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Event Nome</label>
+                    <input type="text" name="Nome_E" class="form-control text-dark" style="background-color : #DDDDDD"
+                        id="Nome_E_id" required [(ngModel)]="Event.nomEvenement" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Localisation</label>
+                    <input type="text" name="localisation" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="localisation_id" required
+                        [(ngModel)]="Event.localisation" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">amount</label>
+                    <input type="number" name="amount" class="form-control text-dark" style="background-color : #DDDDDD"
+                        id="amount_id" required [(ngModel)]="Event.amount" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Date</label>
+                    <input type="date" name="Date_P" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="Date_E_id" required [(ngModel)]="Event.dateCreation" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Date Debut</label>
+                    <input type="time" step="1" name="dateDebut" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="dateDebut_id" required [(ngModel)]="Event.dateDebut" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Date Fin</label>
+                    <input type="time" step="1" name="dateFin" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="dateFin_id" required [(ngModel)]="Event.dateFin" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Max User Number</label>
+                    <input type="number" name="nombreMaxUser" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="nombreMaxUser_id" required
+                        [(ngModel)]="Event.nombreMaxUser" />
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Description</label>
+                    <input type="text" name="descriptionAgenda" class="form-control text-dark"
+                        style="background-color : #DDDDDD" id="descriptionAgenda_id" required
+                        [(ngModel)]="Event.descriptionAgenda" />
+                </div>
+                <div class="modal-footer d-flex justify-content-center mt-3">
+                    <button type="button" class="btn btn-secondary me-4" data-dismiss="modal" [routerLink]="['/dashboard']">Close</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal"
+                        (click)="createNewEvent()">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

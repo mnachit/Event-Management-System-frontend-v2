@@ -1,8 +1,6 @@
 import { Time } from "@angular/common";
-import { UserResponse } from "../UserResponse";
-import { AgendaResponse } from "../AgendaResponse";
 
-export class EventResponse {
+export class EventResponse1 {
     id?: number;
     nomEvenement?: string;
     localisation?: string;
@@ -13,7 +11,5 @@ export class EventResponse {
     descriptionAgenda?: string;
     createdAt?: Date;
     dateCreation?: Date;
-    createdBy1?: string;
-    createdBy?: UserResponse;
-    agenda!: AgendaResponse;
+    createdBy?: string;
 }

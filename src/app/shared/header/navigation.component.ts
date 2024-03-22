@@ -1,12 +1,16 @@
 import { Component, AfterViewInit, EventEmitter, Output } from '@angular/core';
 import { NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LoginService } from 'src/app/service/auth/login.service';
+import { RouterModule } from '@angular/router';
+
 
 declare var $: any;
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
-  imports:[NgbDropdownModule],
+  imports:[NgbDropdownModule,
+    RouterModule],
   templateUrl: './navigation.component.html'
 })
 export class NavigationComponent implements AfterViewInit {
@@ -14,7 +18,7 @@ export class NavigationComponent implements AfterViewInit {
 
   public showSearch = false;
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private loginService: LoginService) {
   }
 
   // This is for Notifications
@@ -111,4 +115,11 @@ export class NavigationComponent implements AfterViewInit {
   }]
 
   ngAfterViewInit() { }
+
+  logout() {
+    if(this.loginService.logout())
+    {
+      window.location.href = '/login';
+    }
+  }
 }

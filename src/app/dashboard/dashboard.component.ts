@@ -3,7 +3,6 @@ import { CreateNeweventService } from '../service/dash/create-newevent.service';
 import { EventResponse } from '../service/dash/event-response';
 import { AuthorizedGuardService } from '../guard/authorized-guard.service';
 import { AllertService } from '../service/dash/allert.service';
-import * as bootstrap from 'bootstrap';
 //declare var require: any;
 
 @Component({
@@ -26,49 +25,43 @@ export class DashboardComponent implements OnInit {
     ({
       next: (data: any) => {
         this.EventById = data;
-        console.log(this.EventById);
-        
-      },
-      error: (e) => console.error(e)
-    });
-  }
-
-  EventById1: EventResponse[] = [];
-
-  getEventById(id: string): void {
-    this.CreateNeweventService.getEventById(id).subscribe
-    ({
-      next: (data: any) => {
-        this.EventById1 = data;
         console.log(data);
         
       },
       error: (e) => console.error(e)
     });
   }
+
+  deleteEvent(id: number | undefined): void {
+    this.CreateNeweventService.deleteEvent(id!  ).subscribe
+    ({
+      next: (data: any) => {
+        this.getEventByIdUser();
+        this.allert.showSuccess(data.message, 2000);
+      },
+      error: (e) => {
+        console.error(e)
+        this.allert.showError("The event was not found", 2000);
+      }
+    });
+  }
+
   ngOnInit() {
     this.getEventByIdUser();
   }
 
-  createNewEvent() {
-    this.Event.createdBy = this.authorizedGuardService.getIdFromToken();
-    this.CreateNeweventService.createNewEvent(this.Event).subscribe(
-      (data: { message: string; result: string }) => {
-        this.allert.showSuccess(data.message, 2000);
-        this.getEventByIdUser();
-      },
-      (error: { errors: string; errorMap: string }) => {
-        this.allert.showError("Please check the form ", 2000);
-        console.log(this.Event);
+  // createNewEvent() {
+  //   this.Event.createdBy1 = this.authorizedGuardService.getIdFromToken();
+  //   this.CreateNeweventService.createNewEvent(this.Event).subscribe(
+  //     (data: { message: string; result: string }) => {
+  //       this.allert.showSuccess(data.message, 2000);
+  //       this.getEventByIdUser();
+  //     },
+  //     (error: { errors: string; errorMap: string }) => {
+  //       this.allert.showError("Please check the form ", 2000);
+  //       console.log(this.Event);
         
-      }
-    );
-  }
-
-  openEventModal(): void {
-    let modal = new bootstrap.Modal(this.modalEvent.nativeElement, {});
-    modal.show();
-  }
-
-  // Rest of the code...
+  //     }
+  //   );
+  // }
 }

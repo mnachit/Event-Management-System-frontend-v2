@@ -1,53 +1,54 @@
-<div class="modal-dialog mt-4">
+<div class="modal-dialog mt-4" >
     <div class="modal-content" style="background-color: #f0f0f0; color: #333;">
         <form>
             <div class="modal-header d-flex justify-content-center" style="background-color: #007bff;">
                 <h5 class="modal-title text-light">Event Test</h5>
             </div>
             
-            <div class="modal-body">
+            <div class="modal-body" >
                 <label class="form-label">Event Name</label>
                 <input type="text" name="Nome_E" class="form-control text-dark" style="background-color: #DDDDDD;"
-                    id="Nome_E_id" required />
+                    id="Nome_E_id" required [(ngModel)]="EventById.nomEvenement" />
             </div>
             <div class="modal-body">
                 <label class="form-label">Location</label>
                 <input type="text" name="localisation" class="form-control text-dark" style="background-color: #DDDDDD;"
-                    id="localisation_id" required />
+                    id="localisation_id" required [(ngModel)]="EventById.localisation" />
             </div>
             <div class="modal-body">
                 <label class="form-label">Amount</label>
                 <input type="number" name="amount" class="form-control text-dark" style="background-color: #DDDDDD;"
-                    id="amount_id" required />
+                    id="amount_id" required [(ngModel)]="EventById.amount" />
             </div>
             <div class="modal-body">
                 <label class="form-label">Date</label>
                 <input type="datetime-local" name="Date_P" class="form-control text-dark"
-                    style="background-color: #DDDDDD;" id="Date_E_id" required />
+                    style="background-color: #DDDDDD;" id="Date_E_id" required [(ngModel)]="EventById.agenda.dateCreation" />
             </div>
             <div class="modal-body">
                 <label class="form-label">Start Time</label>
                 <input type="time" step="1" name="dateDebut" class="form-control text-dark"
-                    style="background-color: #DDDDDD;" id="dateDebut_id" required />
+                    style="background-color: #DDDDDD;" id="dateDebut_id" required [(ngModel)]="EventById.dateDebut" />
             </div>
             <div class="modal-body">
                 <label class="form-label">End Time</label>
                 <input type="time" step="1" name="dateFin" class="form-control text-dark"
-                    style="background-color: #DDDDDD;" id="dateFin_id" required />
+                    style="background-color: #DDDDDD;" id="dateFin_id" required [(ngModel)]="EventById.dateFin" />
             </div>
             <div class="modal-body">
                 <label class="form-label">Max User Number</label>
                 <input type="number" name="nombreMaxUser" class="form-control text-dark"
-                    style="background-color: #DDDDDD;" id="nombreMaxUser_id" required />
+                    style="background-color: #DDDDDD;" id="nombreMaxUser_id" required [(ngModel)]="EventById.nombreMaxUser" />
             </div>
             <div class="modal-body">
                 <label class="form-label">Description</label>
-                <input type="text" name="descriptionAgenda" class="form-control text-dark"
-                    style="background-color: #DDDDDD;" id="descriptionAgenda_id" required />
+
+                <input type="text" name="Nome_D" class="form-control text-dark" style="background-color: #DDDDDD;"
+                    id="Nome_D_id" required [(ngModel)]="EventById.agenda.descriptionAgenda" />
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" data-dismiss="modal">Save</button>
+            <div class="modal-footer mt-4 d-flex justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/dashboard']">Close</button>
+                <button type="submit" class="btn btn-primary ms-2" data-dismiss="modal" >Save</button>
             </div>
         </form>
     </div>

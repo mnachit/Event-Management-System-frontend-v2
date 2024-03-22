@@ -16,8 +16,7 @@ export class checkTokenGuard implements CanActivate {
     const token = localStorage.getItem('token');
 
     if (token && token.length > 0) {
-      this.location.back();
-      return false; 
+      return true;
     } else {
       this.router.navigate(['login']); // Redirect to login page if token is not present
       return false; // Prevent navigation

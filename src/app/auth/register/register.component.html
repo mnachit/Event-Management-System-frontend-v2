@@ -22,31 +22,31 @@
                     <!-- Input Box -->
                     <div class="form-input">
                         <span><i class="fa fa-user"></i></span>
-                        <input type="text" name="" placeholder="First Name" tabindex="10" required>
+                        <input type="text" name="firstName" placeholder="First Name" tabindex="10" required [(ngModel)]="userRegister.firstName">
                     </div>
                     <div class="form-input">
                         <span><i class="fa fa-user"></i></span>
-                        <input type="text" name="" placeholder="Last Name" tabindex="10" required>
+                        <input type="text" name="lastName" placeholder="Last Name" tabindex="10" required [(ngModel)]="userRegister.lastName">
                     </div>
                     <div class="form-input">
-                        <span><i class="fa fa-user"></i></span>
-                        <input type="text" name="" placeholder="Username" tabindex="10" required>
+                        <span><i class="fa fa-phone"></i></span>
+                        <input type="phone" name="phone" placeholder="Phone" tabindex="10" required [(ngModel)]="userRegister.phone">
                     </div>
                     <div class="form-input">
                         <span><i class="fa fa-envelope"></i></span>
-                        <input type="email" name="" placeholder="Email Address" tabindex="10" required>
+                        <input type="email" name="email" placeholder="Email Address" tabindex="10" required [(ngModel)]="userRegister.email">
                     </div>
                     <div class="form-input">
                         <span><i class="fa fa-lock"></i></span>
-                        <input type="password" name="" placeholder="Password" required>
+                        <input type="password" name="password" placeholder="Password" required [(ngModel)]="userRegister.password">
                     </div>
                     <div class="form-input">
                         <span><i class="fa fa-lock"></i></span>
-                        <input type="password" name="" placeholder="Confirm Password" required>
+                        <input type="password" name="cpassword" placeholder="Confirm Password" required>
                     </div>
                     <!-- Register Button -->
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-block">Register</button>
+                        <button type="submit" class="btn btn-block" (click)="register()">Register</button>
                     </div>
                     <div class="text-center mb-2">
                         <div class="text-center mb-3" style="color: #777;">or login with</div>
