@@ -1,146 +1,115 @@
 <div class="row">
-  <div class="col-12">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Project Listing</h4>
-        <h5 class="card-subtitle text-muted">Overview of the projects</h5>
-        <div class="table-responsive">
-          <table class="table align-middle text-nowrap">
-              <thead>
-                  <tr>
-                      <th class="text-dark font-medium fs-4">Team Lead</th>
-                      <th class="text-dark font-medium fs-4">Project</th>
-                      <th class="text-dark font-medium fs-4">Status</th>
-                      <th class="text-dark font-medium fs-4">Weeks</th>
-                      <th class="text-dark font-medium fs-4">Budget</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr *ngFor='let ts of topSelling'>
-                      <td>
-                          <div class="d-flex align-items-center">
-                              <img [src]=ts.image alt="user" width="45" class="rounded-circle">
-                              <div class="ms-3">
-                                  <h5 class="mb-0 font-medium">{{ts.uname}}</h5>
-                                  <span class="text-muted">{{ts.gmail}}</span>
-                              </div>
-                          </div>
-                      </td>
-                      <td class="fs-4">{{ts.productName}}</td>
-                      <td>
-                          <span class="p-2 bg-{{ts.status}} rounded-circle d-inline-block ms-3"></span>
-                      </td>
-                      
-                      <td>
-                          <h5 class="mb-0 fw-normal">{{ts.weeks}}</h5>
-                      </td>
-                      <td>
-                          <h5 class="mb-0 fw-normal">{{ts.budget}}</h5>
-                      </td>
-                  </tr>              
-              </tbody>
-          </table>
-      </div>
-      </div>
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Table with Border</h4>
-            <div class="table-responsive">
-                <table class="table table-bordered align-middle text-nowrap">
-                    <thead>
-                        <tr>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-center me-4">Information about event</h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered align-middle text-nowrap">
+                        <thead>
                             <th class="text-dark font-medium fs-4">#</th>
-                            <th class="text-dark font-medium fs-4">First Name</th>
-                            <th class="text-dark font-medium fs-4">Last Name</th>
-                            <th class="text-dark font-medium fs-4">Username</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor='let tr of trow; index as i'>
-                            <td>
-                                {{ i + 1 }}
-                            </td>
-                            <td>
-                                {{tr.fname}}
-                            </td>
-                            <td>
-                                {{tr.lname}}
-                            </td>
-                            <td>
-                                {{tr.uname}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                            <th class="text-dark font-medium fs-4">Name event</th>
+                            <th class="text-dark font-medium fs-4">Date</th>
+                            <th class="text-dark font-medium fs-4">Start Time</th>
+                            <th class="text-dark font-medium fs-4">End Time</th>
+                            <th class="text-dark font-medium fs-4">Location</th>
+                            <th class="text-dark font-medium fs-4">Total Participants</th>
+                            <th class="text-dark font-medium fs-4">Amount</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h5 class="mb-0 fw-normal">1</h5>
+                                </td>
+                                <td>
+                                    <h5 class="mb-0 fw-normal">{{ EventByCode.nomEvenement }}</h5>
+                                </td>
+                                <td>
+                                    <h5 class="mb-0 fw-normal">{{ EventByCode.agenda.dateCreation }}</h5>
+                                </td>
+                                <td>
+                                    <h5 class="mb-0 fw-normal">{{ EventByCode.dateDebut }}</h5>
+                                </td>
+                                <td>
+                                    <h5 class="mb-0 fw-normal">{{ EventByCode.dateFin }}</h5>
+                                </td>
+                                <td>
+                                    <h5 class="mb-0 fw-normal">{{ EventByCode.localisation }}</h5>
+                                </td>
+                                <td>
+                                    <h5 class="mb-0 fw-normal">{{ EventByCode.nombreMaxUser }}</h5>
+                                </td>
+                                <td>
+                                    <h5 class="mb-0 fw-normal">{{ EventByCode.amount }}$</h5>
+                                </td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-around">
+                    <h4 class="card-title">Invitees</h4>
+                    <button type="button" class="btn btn-rounded btn-info" [routerLink]="['/event', EventByCode.codeEvenement, 'user', 'new']">
+                        Add new user
+                    </button>
+                </div>
+                <div class="table-responsive mt-4">
+                    <table class="table align-middle text-nowrap">
+                        <thead>
+                            <tr>
+                                <th class="text-dark font-medium fs-4">Full name</th>
+                                <th class="text-dark font-medium fs-4">Email</th>
+                                <th class="text-dark font-medium fs-4">Phone</th>
+                                <th class="text-dark font-medium fs-4">Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img alt="user" width="45" class="rounded-circle">
+                                        <div class="ms-3">
+                                            <h5 class="mb-0 font-medium"></h5>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="fs-4"></td>
+                                <td>
+                                    <span class="p-2  rounded-circle d-inline-block ms-3"></span>
+                                </td>
+
+                                <td>
+                                    <h5 class="mb-0 fw-normal"></h5>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Table Hover</h4>
-            <div class="table-responsive">
-                <table class="table table-hover align-middle text-nowrap table-bordered">
-                    <thead>
-                        <tr>
-                            <th class="text-dark font-medium fs-4">#</th>
-                            <th class="text-dark font-medium fs-4">First Name</th>
-                            <th class="text-dark font-medium fs-4">Last Name</th>
-                            <th class="text-dark font-medium fs-4">Username</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor='let tr of trow; index as i'>
-                            <td>
-                                {{ i + 1 }}
-                            </td>
-                            <td>
-                                {{tr.fname}}
-                            </td>
-                            <td>
-                                {{tr.lname}}
-                            </td>
-                            <td>
-                                {{tr.uname}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+</div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Table Striped</h4>
-            <div class="table-responsive">
-                <table class="table table-hover align-middle text-nowrap table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th class="text-dark font-medium fs-4">#</th>
-                            <th class="text-dark font-medium fs-4">First Name</th>
-                            <th class="text-dark font-medium fs-4">Last Name</th>
-                            <th class="text-dark font-medium fs-4">Username</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor='let tr of trow; index as i'>
-                            <td>
-                                {{ i + 1 }}
-                            </td>
-                            <td>
-                                {{tr.fname}}
-                            </td>
-                            <td>
-                                {{tr.lname}}
-                            </td>
-                            <td>
-                                {{tr.uname}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-  </div>
 </div>

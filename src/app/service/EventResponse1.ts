@@ -6,6 +6,7 @@ export class EventResponse1 {
     localisation?: string;
     amount?: string;
     nombreMaxUser?: number;
+    codeEvenement?: string;
     dateDebut?: string;
     dateFin?: string;
     descriptionAgenda?: string;

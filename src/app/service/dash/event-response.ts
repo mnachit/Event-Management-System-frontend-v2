@@ -10,6 +10,7 @@ export class EventResponse {
     nombreMaxUser?: number;
     dateDebut?: string;
     dateFin?: string;
+    codeEvenement?: string;
     descriptionAgenda?: string;
     createdAt?: Date;
     dateCreation?: Date;

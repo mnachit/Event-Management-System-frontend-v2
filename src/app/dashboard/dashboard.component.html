@@ -65,9 +65,14 @@
                                 </td>
                                 <td class="d-flex justify-content-evenly"><button type="submit"
                                         class="btn btn-info opacity-75"
-                                        [routerLink]="['/dashboard/event', event.id]">View</button>
+                                        [routerLink]="['/dashboard/event', event.id]">Edit</button>
+                                        <button type="submit"
+                                        class="btn btn-info opacity-75 me-1 ms-1"
+                                        [routerLink]="['/event', event.codeEvenement]">View</button>
 
-                                    <button type="submit" class="btn btn-danger ms-1" (click)="deleteEvent(event.id)">Delete</button>
+
+                                    <button type="submit" class="btn btn-danger"
+                                        (click)="deleteEvent(event.id)">Delete</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -78,4 +83,3 @@
 
     </div>
 </div>
-

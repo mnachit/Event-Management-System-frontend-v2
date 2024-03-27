@@ -1,0 +1,37 @@
+<div class=" mt-5">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header d-flex justify-content-center">
+                    <h5 class="modal-title text-danger">Add User in Event</h5>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Fisrt name</label>
+                    <input type="text" name="NomeF_E" class="form-control text-dark" style="background-color : #DDDDDD"
+                        id="NomeF_E_id" required [(ngModel)]="first_name"/>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Last name</label>
+                    <input type="text" name="NomeL_E" class="form-control text-dark" style="background-color : #DDDDDD"
+                        id="NomeL_E_id" required [(ngModel)]="last_name"/>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Email</label>
+                    <input type="text" name="email_E" class="form-control text-dark" style="background-color : #DDDDDD"
+                        id="email_E_id" required [(ngModel)]="email"/>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Phone</label>
+                    <input type="text" name="phone_E" class="form-control text-dark" style="background-color : #DDDDDD"
+                        id="phone_E_id" required [(ngModel)]="phone"/>
+                </div>
+                <div class="modal-footer d-flex justify-content-center mt-3">
+                    <button type="button" class="btn btn-secondary me-4" data-dismiss="modal"
+                        [routerLink]="['/dashboard']">Close</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="addUserInEvent()"
+                        >Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

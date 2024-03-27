@@ -56,7 +56,7 @@ export class AddEventComponent {
       },
       (error: { errors: string; errorMap: string }) => {
         this.allert.showError("Please check the form ", 2000);
-        console.log(this.Event.createdBy);
+        console.log(this.Event);
       }
     );
   }

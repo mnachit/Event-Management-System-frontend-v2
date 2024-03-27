@@ -10,6 +10,7 @@ import { EventDetaitsComponent } from './dashboard/event-detaits/event-detaits.c
 import { Error404Component } from './dashboard/error404/error404.component';
 import { AddEventComponent } from './dashboard/add-event/add-event.component';
 import { TableComponent } from './component/table/table.component';
+import { AddUserInEventComponent } from './dashboard/add-user-in-event/add-user-in-event.component';
 
 export const Approutes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -23,9 +24,9 @@ export const Approutes: Routes = [
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
       { path: 'edit-profile', component: EditprofileComponent, canActivate: [checkTokenGuard] }, // Add canActivate here
       { path: 'dashboard/event/:id', component: EventDetaitsComponent, canActivate: [checkTokenGuard] }, // Add canActivate here
-      { path: 'event/:code', component: EventDetaitsComponent, canActivate: [checkTokenGuard] }, // Add canActivate here
       { path: 'event/new', component: AddEventComponent, canActivate: [checkTokenGuard] }, // Add canActivate here
       { path: 'event/:code', component: TableComponent, canActivate: [checkTokenGuard] }, // Add canActivate here
+      { path: 'event/:code/user/new', component: AddUserInEventComponent, canActivate: [checkTokenGuard] }, // Add canActivate here
       {
         path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
