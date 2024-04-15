@@ -4,6 +4,7 @@ import { EventResponse } from './event-response';
 import { Observable } from 'rxjs';
 import { EventResponse1 } from '../EventResponse1';
 import { Response } from './Response';
+import { User } from 'src/app/model/user';
 
 
 const apiUrl = "http://localhost:8082/api/v1/evenement/";
@@ -38,5 +39,11 @@ export class CreateNeweventService {
     return this.http.post<Response<string>>(apiUrl + 'new/user', { firstName, lastName, email, phone, eventId });
   }
 
-  
+  showAllUserInEvent(code: string): Observable<{result: User[]}> {
+    return this.http.get<{result: User[]}>(apiUrl + code + '/show/allUser');
+  }
+
+  deleteUserInEvent(code: string, id_user: number): Observable<Response<string>> {
+    return this.http.delete<Response<string>>(apiUrl + 'user/delete/' + id_user+'/'+code);
+  }
 }

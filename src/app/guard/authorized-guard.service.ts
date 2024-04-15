@@ -26,7 +26,7 @@ export class AuthorizedGuardService {
     return '';
   }
 
-  getIdFromToken(): string {
+  getIdFromToken(): any {
     // Check if the token exists
     if (this.token) {
       // Decode the JWT token
@@ -37,7 +37,5 @@ export class AuthorizedGuardService {
 
       return id;
     }
-
-    return '';
   }
 }

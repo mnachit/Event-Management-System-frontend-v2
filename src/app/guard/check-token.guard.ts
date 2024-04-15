@@ -19,7 +19,7 @@ export class checkTokenGuard implements CanActivate {
       return true;
     } else {
       this.router.navigate(['login']); // Redirect to login page if token is not present
-      return false; // Prevent navigation
+      return false; // Prevent navigation 
     }
   }
 }

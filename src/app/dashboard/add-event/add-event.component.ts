@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthorizedGuardService } from 'src/app/guard/authorized-guard.service';
@@ -19,9 +19,10 @@ import { RouterModule } from '@angular/router';
   templateUrl: './add-event.component.html',
   styleUrl: './add-event.component.scss'
 })
-export class AddEventComponent {
+export class AddEventComponent implements OnInit{
 
   Event: EventResponse1 = new EventResponse1();
+  id_user: string = '';
 
   constructor(
     private CreateNeweventService: CreateNeweventService,
@@ -30,21 +31,25 @@ export class AddEventComponent {
     private router: Router
   ) {}
 
+  ngOnInit() {
+    this.id_user = this.authorizedGuardService.getIdFromToken();
+    console.log(this.id_user);
+  }
+
   createNewEvent() {
-    this.Event.createdBy = this.authorizedGuardService.getIdFromToken();
+    this.Event.createdBy = this.id_user;
+    console.log(this.authorizedGuardService.getIdFromToken());
     if (this.Event.dateFin) {
-      let timeString = this.Event.dateFin.toString(); // Convert Time to string
+      let timeString = this.Event.dateFin.toString();
       if (timeString.length === 5) {
-        // Append ":00" to include seconds if they're missing
         timeString += ":00";
         this.Event.dateFin = timeString;
       }
     }
     
     if (this.Event.dateDebut) {
-      let timeString = this.Event.dateDebut.toString(); // Convert Time to string
+      let timeString = this.Event.dateDebut.toString();
       if (timeString.length === 5) {
-        // Append ":00" to include seconds if they're missing
         timeString += ":00";
         this.Event.dateDebut = timeString;
       }
